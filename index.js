@@ -21,17 +21,19 @@ app.get('/' , (req, res ) => {
     if(req.query.busca == null){
         res.render('home' , {})
     }else{
-        res.send('Você buscou ' + req.query.busca)
+        res.render('busca' , {})
     }
 })
 
 app.get('/:slug' , (req , res) => {
-    res.send(req.params.slug)
+    // res.send(req.params.slug)
+    res.render('single' , {})
 })
 
 //criação do servidor
-app.listen(3000 , () => {
+app.listen(4000 , () => {
     console.log('Servidor rodando');
+
     
 })
 
