@@ -5,8 +5,12 @@ const path = require('path')
 let bodyParser = require('body-parser')
 
 
+const Posts = require('./Posts.js')
+
+
+
 //connet with mongo atlas
-mongoose.connect('mongodb+srv://root:mrjesse12@cluster0.z6f9b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+mongoose.connect('mongodb+srv://root:mrjesse12@cluster0.z6f9b.mongodb.net/Aula_node?retryWrites=true&w=majority&appName=Cluster0').then(() => {
     console.log("Conectado com sucesso");
 }).catch((err) => {
     console.log(err.message);
@@ -26,11 +30,24 @@ app.set('view engine' , 'ejs')
 app.use('/public' , express.static(path.join(__dirname, 'public')))
 app.set('views' , path.join(__dirname, '/src/pages'))
 
-app.get('/' , (req, res ) => {
+app.get('/' , async  (req, res ) => {
     console.log(req.query);
 
     if(req.query.busca == null){
-        res.render('home' , {})
+        Posts.find({}).sort({'_id': -1}).exec(function(err, posts){
+        console.log(posts[0]);
+            posts = posts.map(function(val){
+                return{
+                    titulo: val.titulo,
+                    conteudo: val.conteudo,
+                    descricaoCurta: val.conteudo.substr(0,100),
+                    imagem: val.imagem,
+                    slug: val.slug,
+                    categoria: val.categoria
+                }
+            })
+         res.render('home' ,{posts:posts})
+      })
     }else{
         res.render('busca' , {})
     }
