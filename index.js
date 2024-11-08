@@ -1,7 +1,18 @@
 const express =  require('express')
+const mongoose = require('mongoose')
 const app = express()
 const path = require('path')
 let bodyParser = require('body-parser')
+
+
+//connet with mongo atlas
+mongoose.connect('mongodb+srv://root:mrjesse12@cluster0.z6f9b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+    console.log("Conectado com sucesso");
+}).catch((err) => {
+    console.log(err.message);
+    
+})
+
 
 app.use( bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -34,6 +45,5 @@ app.get('/:slug' , (req , res) => {
 app.listen(4000 , () => {
     console.log('Servidor rodando');
 
-    
 })
 
