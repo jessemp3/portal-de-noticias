@@ -55,7 +55,22 @@ app.get('/' , async  (req, res ) => {
 
 app.get('/:slug' , (req , res) => {
     // res.send(req.params.slug)
-    res.render('single' , {})
+
+    Posts.findOneAndUpdate(
+        { slug: req.params.slug },
+        { $inc: { view: 1 } },
+        { new: true },
+        (err, resposta) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).render('error', { message: 'An error occurred' });
+            }
+            if (!resposta) {
+                return res.status(404).render('error', { message: 'Post not found' });
+            }
+            res.render('single', { post: resposta });
+        }
+    );
 })
 
 //criação do servidor
