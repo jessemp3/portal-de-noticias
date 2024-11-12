@@ -29,47 +29,28 @@
 
 
                         <div class="mais-lidas">
-                            <h3>AS MAIS LIDAS</h3>
+                            <h3>
+                                <%= contagem %> Resultados
+                            </h3>
                             <div class="noticia-mais-lida">
-                                <img src="/public/imgs/1.jpg" alt="Paisagem com neve">
-                                <div class="texto-mais-lida">
-                                    <span class="categoria">NATUREZA</span>
-                                    <p>A importância do frio para a biodiversidade mundial! Qual o impacto do degelo na
-                                        fauna e
-                                        flora?</p>
-                                </div>
+                                <% for( let i=0; i < posts.length; i++ ) { %>
+                                    <img style="width: 100px; height: 100px;  border-radius: 20px;"
+                                        src="<%= posts[i].imagem %>" alt="Paisagem com neve">
+                                    <div class="texto-mais-lida">
+                                        <span class="categoria">
+                                            <%= posts[i].categoria %>
+                                        </span>
+                                        <p>
+                                            <%= posts[i].descricaoCurta %>
+                                        </p>
+                                    </div>
                             </div>
-                            <div class="noticia-mais-lida">
-                                <img src="/public/imgs/1.jpg" alt="Paisagem com neve">
-                                <div class="texto-mais-lida">
-                                    <span class="categoria">NATUREZA</span>
-                                    <p>A importância do frio para a biodiversidade mundial! Qual o impacto do degelo na
-                                        fauna e
-                                        flora?</p>
-                                </div>
-                            </div>
-                            <div class="noticia-mais-lida">
-                                <img src="/public/imgs/1.jpg" alt="Paisagem com neve">
-                                <div class="texto-mais-lida">
-                                    <span class="categoria">NATUREZA</span>
-                                    <p>A importância do frio para a biodiversidade mundial! Qual o impacto do degelo na
-                                        fauna e
-                                        flora?</p>
-                                </div>
-                            </div>
-                            <div class="noticia-mais-lida">
-                                <img src="/public/imgs/1.jpg" alt="Paisagem com neve">
-                                <div class="texto-mais-lida">
-                                    <span class="categoria">NATUREZA</span>
-                                    <p>A importância do frio para a biodiversidade mundial! Qual o impacto do degelo na
-                                        fauna e
-                                        flora?</p>
-                                </div>
-                            </div>
-                            <!-- Adicione mais notícias mais lidas aqui -->
+                            <% } %>
                         </div>
+                        <!-- Adicione mais notícias mais lidas aqui -->
                     </div>
                 </div>
+            </div>
         </section>
         <%- include('Components/footer.ejs') %>
 

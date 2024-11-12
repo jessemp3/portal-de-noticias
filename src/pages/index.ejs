@@ -68,7 +68,7 @@
                                 <!-- Notícia do New York Times -->
                                 <div class="box-single-noticia ny-times">
                                     <div class="card">
-                                        <a href="/saiba-mais">
+                                        <a href="<%= posts[1].slug %>">
                                             <div class="card-content">
                                                 <h2 class="card-label">Arquitetura</h2>
                                                 <p class="card-text">
@@ -80,7 +80,7 @@
                                         </a>
                                     </div>
                                     <div class="card">
-                                        <a href="/saiba-mais">
+                                        <a href="<%=posts[2].slug %>">
                                             <div class="card-content">
                                                 <h2 class="card-label">Arquitetura</h2>
                                                 <p class="card-text">
@@ -97,13 +97,15 @@
                     <div class="mais-lidas">
                         <h3>AS MAIS LIDAS</h3>
 
-                        <% for( let i=0; i < posts.length; i++ ) { %>
+                        <% for( let i=0; i <postsTop.length; i++ ) { %>
 
                             <div class="noticia-mais-lida">
-                                <img src="<%= posts[i].imagem %>" alt="Paisagem com neve" />
+                                <img src="<%= postsTop[i].imagem %>" alt="Paisagem com neve" />
                                 <div class="texto-mais-lida">
                                     <span class="categoria">Turismo</span>
-                                    <p><%- posts[i].descricaoCurta %></p>
+                                    <p><%- postsTop[i].descricaoCurta %></p>
+                                    <span style="font-size: 12px; font-weight: bold; ">(<%= postsTop[i].views %>
+                                            views)</span>
                                 </div>
                             </div>
                             <% } %>

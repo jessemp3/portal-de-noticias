@@ -5,79 +5,40 @@
         <section class="noticia">
             <div class="center">
                 <div class="noticia-single">
-                    <h2>Dez lugares Incríveis para viajar</h2>
+                    <h2>
+                        <%= noticia.titulo %>
+
+                    </h2>
                     <div class="autor-nome">
-                        <span>Por Jesse</span>
+                        <span>
+                            <%= noticia.autor %>
+                        </span>
                     </div>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, repudiandae repellat quam sunt
-                        consequuntur deserunt optio ipsa perspiciatis commodi pariatur in qui deleniti quasi laboriosam
-                        magnam amet quod, itaque enim tempora? Quas, hic voluptates architecto obcaecati perspiciatis
-                        porro sapiente! Iusto animi accusantium quibusdam culpa veniam molestiae soluta unde fuga optio
-                        voluptas officia ipsam rem iure quisquam ad tempora cumque aperiam autem at voluptatibus eum,
-                        recusandae eius? Et nisi corporis itaque quos nemo modi quam? Odit cupiditate ut quibusdam quos
-                        quis, voluptates dolor delectus. Vel, voluptates facere harum vero eos sed nesciunt voluptatem
-                        voluptatum magni doloremque! Fuga modi quo odit ratione!
-                    </p>
-                    <h3>
-                        Veneza
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aut id modi doloremque,
-                        repudiandae labore quisquam. Blanditiis quidem eum molestiae, odio fugit excepturi illum quasi
-                        iure. Magnam repudiandae nihil suscipit ut culpa? Dolore maxime atque quis molestiae culpa
-                        facilis ut dignissimos, itaque voluptatibus aut quibusdam! Ipsam, aliquid cupiditate. Deleniti
-                        voluptatum qui vel, beatae nulla praesentium maxime tempora quos illum. Minus, perferendis quas!
-                        Illo quidem perspiciatis neque. Eius quo quia magni, atque porro ipsum fugit illum placeat
-                        temporibus adipisci molestias maiores libero ducimus ullam, tenetur, earum repudiandae fugiat
-                        maxime quaerat necessitatibus repellat facilis omnis. Quae illo temporibus veniam aspernatur!
-                        Asperiores commodi nisi modi? Officia aliquam assumenda quisquam vitae sit corporis consequuntur
-                        accusamus corrupti aut similique nobis blanditiis neque, asperiores ut dolores placeat, in
-                        perferendis quod! Et ut culpa odit suscipit voluptate ratione dicta libero quaerat nisi
-                        cupiditate. Magni, voluptates? Exercitationem porro recusandae earum iure ipsum quas suscipit
-                        asperiores numquam odit a.c
-                    </p>
+                    <br>
+                    <div>
+                        <img style="max-width: 100%;" src="<%= noticia.imagem %>" alt="">
+                    </div>
+                    <br>
+                    <%= noticia.conteudo %>
+
                 </div>
                 <div class="mais-lidas">
                     <h3>AS MAIS LIDAS</h3>
-                    <div class="noticia-mais-lida">
-                        <img src="/public/imgs/1.jpg" alt="Paisagem com neve">
-                        <div class="texto-mais-lida">
-                            <span class="categoria">NATUREZA</span>
-                            <p>A importância do frio para a biodiversidade mundial! Qual o impacto do degelo na
-                                fauna e
-                                flora?</p>
+
+                    <% for( let i=0; i <postsTop.length; i++ ) { %>
+
+                        <div class="noticia-mais-lida">
+                            <img src="<%= postsTop[i].imagem %>" alt="Paisagem com neve" />
+                            <div class="texto-mais-lida">
+                                <span class="categoria">Turismo</span>
+                                <p><%- postsTop[i].descricaoCurta %></p>
+                                <span style="font-size: 12px; font-weight: bold; ">(<%= postsTop[i].views %>
+                                        views)</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="noticia-mais-lida">
-                        <img src="/public/imgs/1.jpg" alt="Paisagem com neve">
-                        <div class="texto-mais-lida">
-                            <span class="categoria">NATUREZA</span>
-                            <p>A importância do frio para a biodiversidade mundial! Qual o impacto do degelo na
-                                fauna e
-                                flora?</p>
-                        </div>
-                    </div>
-                    <div class="noticia-mais-lida">
-                        <img src="/public/imgs/1.jpg" alt="Paisagem com neve">
-                        <div class="texto-mais-lida">
-                            <span class="categoria">NATUREZA</span>
-                            <p>A importância do frio para a biodiversidade mundial! Qual o impacto do degelo na
-                                fauna e
-                                flora?</p>
-                        </div>
-                    </div>
-                    <div class="noticia-mais-lida">
-                        <img src="/public/imgs/1.jpg" alt="Paisagem com neve">
-                        <div class="texto-mais-lida">
-                            <span class="categoria">NATUREZA</span>
-                            <p>A importância do frio para a biodiversidade mundial! Qual o impacto do degelo na
-                                fauna e
-                                flora?</p>
-                        </div>
-                    </div>
-                    <!-- Adicione mais notícias mais lidas aqui -->
+                        <% } %>
                 </div>
+
             </div>
         </section>
         <%- include('Components/footer.ejs') %>
