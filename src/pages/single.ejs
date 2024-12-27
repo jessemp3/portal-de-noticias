@@ -1,0 +1,47 @@
+<html>
+
+<body>
+    <%- include('Components/header.ejs') %>
+        <section class="noticia">
+            <div class="center">
+                <div class="noticia-single">
+                    <h2>
+                        <%= noticia.titulo %>
+
+                    </h2>
+                    <div class="autor-nome">
+                        <span>
+                            <%= noticia.autor %>
+                        </span>
+                    </div>
+                    <br>
+                    <div>
+                        <img style="max-width: 100%;" src="<%= noticia.imagem %>" alt="">
+                    </div>
+                    <br>
+                    <%= noticia.conteudo %>
+
+                </div>
+                <div class="mais-lidas">
+                    <h3>AS MAIS LIDAS</h3>
+
+                    <% for( let i=0; i <postsTop.length; i++ ) { %>
+
+                        <div class="noticia-mais-lida">
+                            <img src="<%= postsTop[i].imagem %>" alt="Paisagem com neve" />
+                            <div class="texto-mais-lida">
+                                <span class="categoria">Turismo</span>
+                                <p><%- postsTop[i].descricaoCurta %></p>
+                                <span style="font-size: 12px; font-weight: bold; ">(<%= postsTop[i].views %>
+                                        views)</span>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+
+            </div>
+        </section>
+        <%- include('Components/footer.ejs') %>
+</body>
+
+</html>

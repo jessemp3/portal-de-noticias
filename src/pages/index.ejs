@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/style.css" />
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- forma de adicionar um outro componente , usando a sintaxe do ejs -->
+    <%- include('Components/header.ejs') %>
+
+        <section class="noticia-destaque">
+            <div class="center-first">
+                <div class="img-destaque">
+                    <div class="autor">
+                        <img src="/public/imgs/eu.jpg" alt="Autor" />
+                        <span>POR KAIQUE ALVES</span>
+                    </div>
+                    <div class="heart-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="title-destaque-description">
+                        <a href="<%= posts[0].slug %>">
+                            <h2>
+                                <%= posts[0].titulo %>
+                            </h2>
+                        </a>
+                        <p><%- posts[0].descricaoCurta %></p>
+                    </div>
+                    <img src="<%= posts[0].imagem %>" alt="" />
+                </div>
+            </div>
+        </section>
+
+        <section class="outras-noticias">
+            <div class="title-outras-noticias">
+                <h2>Últimas publicações</h2>
+                <div class="center">
+                    <div class="ultimas">
+                        <!-- Notícia principal com imagem -->
+
+                        <% for( let i=1; i < posts.length; i++ ) { %>
+
+                            <div class="box-single-noticia">
+                                <div class="img-noticia">
+                                    <img src="<%= posts[i].imagem %>" alt="Surfistas na praia" />
+                                </div>
+                                <div class="categoria">
+                                    <span>DICA DE AVENTURA</span>
+                                </div>
+                                <h3>
+                                    <%= posts[i].titulo %>
+                                </h3>
+                                <p><%- posts[i].descricaoCurta %></p>
+                            </div>
+
+                            <% } %>
+
+                                <!-- Notícia do New York Times -->
+                                <div class="box-single-noticia ny-times">
+                                    <div class="card">
+                                        <a href="<%= posts[1].slug %>">
+                                            <div class="card-content">
+                                                <h2 class="card-label">Arquitetura</h2>
+                                                <p class="card-text">
+                                                    Veja as obras premiadas do famoso arquiteto Oscar Niemeyer
+                                                    que estão em exposição no Museu da Arquitetura Moderna em
+                                                    Milão.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card">
+                                        <a href="<%=posts[2].slug %>">
+                                            <div class="card-content">
+                                                <h2 class="card-label">Arquitetura</h2>
+                                                <p class="card-text">
+                                                    Veja as obras premiadas do famoso arquiteto Oscar Niemeyer
+                                                    que estão em exposição no Museu da Arquitetura Moderna em
+                                                    Milão.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                    </div>
+
+                    <div class="mais-lidas">
+                        <h3>AS MAIS LIDAS</h3>
+
+                        <% for( let i=0; i <postsTop.length; i++ ) { %>
+
+                            <div class="noticia-mais-lida">
+                                <img src="<%= postsTop[i].imagem %>" alt="Paisagem com neve" />
+                                <div class="texto-mais-lida">
+                                    <span class="categoria">Turismo</span>
+                                    <p><%- postsTop[i].descricaoCurta %></p>
+                                    <span style="font-size: 12px; font-weight: bold; ">(<%= postsTop[i].views %>
+                                            views)</span>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('Components/footer.ejs') %>
+</body>
+
+</html>
