@@ -41,7 +41,7 @@ A aplicação é gerenciada pelo PM2, que facilita o monitoramento e a manutenç
    ``` 
 3. Configure as variáveis de ambiente:
     ```sh
-     DB_URI=mongodb://<usuário>:<senha>@<host>:<porta>/<database>
+     "mongodb+srv://root:usuario@cluster0.z6f9b.mongodb.net/banco?retryWrites=true&w=majority&appName=Cluster0"
    ``` 
 4. Inicie a aplicação:
      ```sh
